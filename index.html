@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gidesh Website</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color:#007BFF;
+    }
+    .login-container,
+    .profile-container {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    .login-box {
+      background: green;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      width: 500px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .login-box img {
+      width: 150px;
+      height: 250px;
+      border-radius: 50% / 50%;
+      object-fit: cover;
+      border: 3px solid #ff2a00;
+    }
+    .form-section {
+      flex-grow: 1;
+    }
+    marquee {
+      width: 100%;
+      background: #ff7300;
+      color: yellow;
+      font-weight: bold;
+      font-size: 22px;
+      padding: 10px 0;
+    }
+    label {
+      display: block;
+      text-align: left;
+      margin: 10px 0 5px;
+    }
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .success {
+      color: yellow;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+    .main-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 40px;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    .left-section {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 50px;
+    }
+    .left-section a {
+      text-decoration: none;
+      color: #000; /* black text */
+      font-size: 20px;
+      margin: 15px 0;
+      border-left: 5px solid #007BFF;
+      padding-left: 10px;
+      transition: 0.3s ease;
+    }
+    .left-section a:hover {
+      color: #007BFF;
+    }
+    .welcome-message {
+      text-align: center;
+      margin: 30px 0;
+      font-size: 24px;
+      font-weight: bold;
+      color: blueviolet; /* red welcome text */
+      width: 100%;
+    }
+    .right-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .right-section img {
+      width: 250px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 50% / 50%;
+      border: 5px solid green;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .bottom-left {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+    }
+    .bottom-left a {
+      background-color: red; /* red background */
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: background 0.3s ease;
+    }
+    .bottom-left a:hover {
+      background-color: rgb(0, 139, 44);
+    }
+  </style>
+</head>
+<body>
+  <!-- Welcome Marquee -->
+  <marquee behavior="scroll" direction="left" scrollamount="6">
+    WELCOME TO GIDESH WEBSITE.
+  </marquee>
+  <!-- Login Section -->
+  <div class="login-container" id="loginContainer" style="display: flex;">
+    <div class="login-box">
+      <!-- Oval Image to the left of form -->
+      <img src="kasimb.jpg" alt="Gideon">
+      <div class="form-section">
+        <form onsubmit="return handleLogin(event)">
+          <label for="username">Username (Email)</label>
+          <input type="email" id="username" required>
+          <label for="password">Password</label>
+          <input type="password" id="password" required>
+          <button type="submit">Login</button>
+          <div class="success" id="success-msg" style="display:none;">Login Successfully</div>
+          <div class="error" id="error-msg"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Profile Section -->
+  <div class="profile-container" id="profileContainer">
+    <div class="main-container">
+      <div class="left-section">
+        <a href="Home.html">Home</a>
+        <a href="Skills.html">Skills</a>
+        <a href="Education.html">Education</a>
+        <a href="Contact.html">Contact</a>
+      </div>
+      <div class="right-section">
+        <div class="welcome-message">Hi,there I am Gideon Ivutha</div>
+        <img src="gidgid.jpg" alt="Profile Image">
+      </div>
+    </div>
+    <div class="bottom-left">
+      <a href="About Me.html">About Me</a>
+    </div>
+  </div>
+  <script>
+    function handleLogin(event) {
+      event.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const successMsg = document.getElementById('success-msg');
+      const errorMsg = document.getElementById('error-msg');
+      if (username === 'kasimbi@gmail.com' && password === '1234') {
+        errorMsg.textContent = '';
+        successMsg.style.display = 'block';
+        setTimeout(() => {
+          document.getElementById('loginContainer').style.display = 'none';
+          document.getElementById('profileContainer').style.display = 'block';
+        }, 500);
+      } else {
+        successMsg.style.display = 'none';
+        errorMsg.textContent = "Incorrect username or password.";
+      }
+    }
+  </script>
+</body>
+</html>
